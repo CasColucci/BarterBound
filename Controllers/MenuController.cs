@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Controllers
 {
-    internal class MenuController : IMenuController
+    public class MenuController : IMenuController
     {
         private int _selectedOption;
         private List<string> _options;

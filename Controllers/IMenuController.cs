@@ -12,6 +12,9 @@ namespace BarterBound.Controllers
 
         public void Run();
 
-        private void DisplayOptions();
+        private void DisplayOptions()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
