@@ -12,7 +12,7 @@ namespace BarterBound.Controllers
         private List<string> _options;
         private string _prompt;
 
-        public void Menu(string prompt, List<string> options)
+        public MenuController(string prompt, List<string> options)
         {
             _prompt = prompt;
             _options = options;

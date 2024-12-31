@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BarterBound.Data.Scenes
 {
@@ -15,11 +17,11 @@ namespace BarterBound.Data.Scenes
         // it will then navigate to the next text block which follows, or will return to the town menu
         // it will get the text blocks via its own named file
 
-        public string TextBlockLocation => $"Data/Scenes/TextBlocks/{SceneName}.json";
+        public string TextBlockLocation => $@"..BarterBound/Data/Scenes/TextBlocks/{SceneName}.xml";
 
         public virtual string SceneName => "EmptyScene";
 
-        private List<TextBlockModel> TextBlocks = new List<TextBlockModel>();
+        private List<TextBlockModel?> TextBlocks = new List<TextBlockModel?>();
 
         public string CurrentEvent { get; set; }
 
@@ -44,7 +46,9 @@ namespace BarterBound.Data.Scenes
         
         private void LoadTextBlocks()
         {
-
+            XmlDocument doc = new XmlDocument();
+            doc.Load(TextBlockLocation);
+            Console.WriteLine(TextBlocks);
         }
 
         private void DisplayTextBlocks()

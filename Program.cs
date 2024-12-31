@@ -1,10 +1,13 @@
-﻿namespace BarterBound
+﻿using BarterBound.Controllers;
+
+namespace BarterBound
 {
     class Program
     {
-        static void Main()
+        GameController gameController = new GameController();
+        public void Main()
         {
-            
+            gameController.Run();
         }
     }
 }

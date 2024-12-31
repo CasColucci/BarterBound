@@ -1,0 +1,13 @@
+<TextBlocks>
+  <TriggerEvent>OnStart</TriggerEvent>
+  <TextValues>
+    <TextValue>So, you're really going through with it huh?</TextValue>
+    <TextValue>You're going to go out there into the world and become a merchant.</TextValue>
+    <TextValue>Looking for fortune along the trail.</TextValue>
+    <TextValue>That sounds insane to me, but if anyone can do it, you can.</TextValue>
+    <TextValue>I figured I'd come to see you off.</TextValue>
+    <TextValue>After all, it's been years since we met.</TextValue>
+    <TextValue>Feels like just yesterday you were here, introducing yourself to me.</TextValue>
+  </TextValues>
+  <NextAction>NamePlayer</NextAction>
+</TextBlocks>
