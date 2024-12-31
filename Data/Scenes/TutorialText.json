@@ -1,0 +1,32 @@
+{
+  "TextBlocks": [
+    {
+      "TriggerEvent": "OnStart",
+      "TextValues": [
+        "Placeholder Text 1",
+        "Placeholder text 2",
+        "Placeholder text 3"
+      ],
+      "NextAction": "none"
+    },
+    {
+      "TriggerEvent": "OnStart",
+      "TextValues": [
+        "Placeholder Text 4",
+        "Placeholder text 5",
+        "Placeholder text 6"
+      ],
+      "NextAction": "none"
+    },
+    {
+      "TriggerEvent": "OnStart",
+      "TextValues": [
+        "Placeholder Text 7",
+        "Placeholder text 8",
+        "Placeholder text 9"
+      ],
+      "NextAction": "none"
+    }
+
+  ]
+}
