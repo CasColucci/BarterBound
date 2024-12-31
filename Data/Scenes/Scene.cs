@@ -7,16 +7,59 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Data.Scenes
 {
-    internal class Scene
+    public abstract class Scene
     {
         // scenes have the ability to navigate text blocks
         // it will display the text blocks in order with a break in between
         // it will then perform the action that follows the text block
         // it will then navigate to the next text block which follows, or will return to the town menu
-        public string SceneName { get; set; }
+        // it will get the text blocks via its own named file
 
-        public List<TextBlockModel> TextBlocks { get; set; }
+        public string TextBlockLocation => $"Data/Scenes/TextBlocks/{SceneName}.json";
 
-        public string currentEvent { get; set; }
+        public virtual string SceneName => "EmptyScene";
+
+        private List<TextBlockModel> TextBlocks = new List<TextBlockModel>();
+
+        public string CurrentEvent { get; set; }
+
+        public Scene()
+        {
+
+        }
+
+        public void Run()
+        {             // load the text blocks
+            LoadTextBlocks();
+
+            // display the text blocks
+            DisplayTextBlocks();
+
+            // perform the action
+            PerformAction();
+
+            // navigate to the next text block
+            NavigateToNextTextBlock();
+        }
+        
+        private void LoadTextBlocks()
+        {
+
+        }
+
+        private void DisplayTextBlocks()
+        {
+
+        }
+
+        private void PerformAction()
+        {
+
+        }
+
+        private void NavigateToNextTextBlock()
+        {
+
+        }
     }
 }

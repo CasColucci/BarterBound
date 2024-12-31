@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Data.Enums
 {
-    enum NextActionEnum
+    public enum NextActionEnum
     {
         None,
-        ChooseOption,
-        EnterText,
-        StartShop,
-        ExitGame
+        NamePlayer
 
     }
 }

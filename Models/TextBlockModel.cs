@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarterBound.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,6 @@ namespace BarterBound.Models
 
         public List<string> TextValues { get; set; }
 
-        public 
+        public NextActionEnum NextAction { get; set; }
     }
 }

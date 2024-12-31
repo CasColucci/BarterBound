@@ -1,0 +1,11 @@
+{
+  "TextBlocks": [
+    "TriggerEvent": "OnStart",
+    "TextValues":
+    [
+      "Test",
+      "Test 2"
+    ],
+    "NextAction": "None",
+  ]
+}
