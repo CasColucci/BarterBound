@@ -3,11 +3,13 @@
     {
       "TriggerEvent": "OnStart",
       "TextValues": [
-        "Placeholder Text 1",
-        "Placeholder text 2",
-        "Placeholder text 3"
+        "Oh hey there.",
+        "So you're really going to do it, huh?",
+        "Go out there into the world and become a merchant.",
+        "That sounds insane."
       ],
-      "NextAction": "none"
+      "NextAction": "none",
+      
     },
     {
       "TriggerEvent": "OnStart",

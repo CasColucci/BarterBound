@@ -12,7 +12,6 @@ namespace BarterBound.Data.Enums
         ChooseOption,
         EnterText,
         StartShop,
-
         ExitGame
 
     }
