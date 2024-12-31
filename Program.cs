@@ -4,10 +4,13 @@ namespace BarterBound
 {
     class Program
     {
-        GameController gameController = new GameController();
-        public void Main()
+
+        private static GameController gameController = new GameController();
+
+        static void Main()
         {
             gameController.Run();
+
         }
     }
 }

@@ -31,7 +31,7 @@ namespace BarterBound.Data.Scenes
         }
 
         public void Run()
-        {             // load the text blocks
+        {   // load the text blocks
             LoadTextBlocks();
 
             // display the text blocks
@@ -44,24 +44,24 @@ namespace BarterBound.Data.Scenes
             NavigateToNextTextBlock();
         }
         
-        private void LoadTextBlocks()
+        protected void LoadTextBlocks()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(TextBlockLocation);
             Console.WriteLine(TextBlocks);
         }
 
-        private void DisplayTextBlocks()
+        protected void DisplayTextBlocks()
         {
 
         }
 
-        private void PerformAction()
+        protected void PerformAction()
         {
 
         }
 
-        private void NavigateToNextTextBlock()
+        protected void NavigateToNextTextBlock()
         {
 
         }

@@ -8,9 +8,9 @@ namespace BarterBound.Controllers
 {
     public interface IMenuController
     {
-        public void MenuController(string prompt, List<string> options);
+        public void Menu(string prompt, List<string> options);
 
-        public void Run();
+        public int Run();
 
         private void DisplayOptions()
         {
