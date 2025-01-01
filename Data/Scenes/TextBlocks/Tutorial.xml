@@ -1,13 +1,50 @@
 <TextBlocks>
-  <TriggerEvent>OnStart</TriggerEvent>
-  <TextValues>
-    <TextValue>So, you're really going through with it huh?</TextValue>
-    <TextValue>You're going to go out there into the world and become a merchant.</TextValue>
-    <TextValue>Looking for fortune along the trail.</TextValue>
-    <TextValue>That sounds insane to me, but if anyone can do it, you can.</TextValue>
-    <TextValue>I figured I'd come to see you off.</TextValue>
-    <TextValue>After all, it's been years since we met.</TextValue>
-    <TextValue>Feels like just yesterday you were here, introducing yourself to me.</TextValue>
-  </TextValues>
-  <NextAction>NamePlayer</NextAction>
+	<TextBlock>
+      <TriggerEvent>OnStart</TriggerEvent>
+      <TextValues>
+		  <TextValue>\DTodays the day. You're going out into the world to find your destiny on the trade route.</TextValue>
+		  <TextValue>So, you're really going through with it huh?</TextValue>
+		  <TextValue>It's your neighbor, who leans in the doorway of your small home, watching you finish packing.</TextValue>
+		  <TextValue>You're going to go out there into the world and become a merchant.</TextValue>
+		  <TextValue>Looking for fortune along the trail.</TextValue>
+		  <TextValue>That sounds insane to me, but if anyone can do it, you can.</TextValue>
+		  <TextValue>I figured I'd come to see you off.</TextValue>
+		  <TextValue>After all, it's been years since we met.</TextValue>
+		  <TextValue>Feels like just yesterday you were here, introducing yourself to me.</TextValue>
+		</TextValues>
+      <NextAction>NamePlayer</NextAction>
+	</TextBlock>
+	<TextBlock>
+		<TriggerEvent>NamePlayer</TriggerEvent>
+		<TextValues>
+			<TextValue>You were a plucky, adorable little thing back then, {playerName}.</TextValue>
+			<TextValue>And now you're all grown up, ready to take on the world.</TextValue>
+			<TextValue>It's a little bittersweet, but I'm proud of you.</TextValue>
+			<TextValue>Anyway, I'm not here just to get sentimental.</TextValue>
+			<TextValue>\SI wanted to see if you'd remembered the stuff I had you hold on for me.</TextValue>
+			<TextValue>\DHe smiles and laughs, somewhat sheepishly</TextValue>
+			<TextValue>Yeah, I forgot too.</TextValue>
+			<TextValue>It was actually back when I was thinking of doing some trading myself.</TextValue>
+			<TextValue>But, obviously, I never got around to it, and I was never interested in travelling.</TextValue>
+			<TextValue>Well, it should still be in the attic where I moved it, right?</TextValue>
+			<TextValue>Why don't you take whatever you find in there.</TextValue>
+			<TextValue>It may not be much, but it should get you started!</TextValue>
+			<TextValue>Take it and either trade it here, or see if you might get more for it elsewhere.</TextValue>
+			<TextValue>Pay attention to the items you have on you. The type can really effect what people will pay for it.</TextValue>
+			<TextValue>The more items you trade of a certain type, the more you'll develop a reputation in that trade.</TextValue>
+			<TextValue>You don't have to, but specializing in something could really open some doors for you.</TextValue>
+			<TextValue>Wondering how I know so much? I told you I thought about doing some trading.</TextValue>
+			<TextValue>Well, I've talked your ear off enough.</TextValue>
+			<TextValue>Good luck out there, {playerName}.</TextValue>
+			<TextValue>He waves goodbye casually, and leaves you alone. </TextValue>
+			<TextValue>Finishing the last of your packing, you leave your pack next to your empty home, and head to your attic to retrieve the items</TextValue>
+		</TextValues>
+		<NextAction>GetItem</NextAction>
+	</TextBlock>
+	<TextBlock>
+		<TriggerEvent>GetItem</TriggerEvent>
+		<TextValues>
+			<TextValue>With your new items packed in your rucksack, you leave your home, ready for what you will face.</TextValue>
+		</TextValues>
+	</TextBlock>
 </TextBlocks>

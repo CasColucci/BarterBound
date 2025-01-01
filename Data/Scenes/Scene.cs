@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml;
+using static System.Console;
 
 namespace BarterBound.Data.Scenes
 {
@@ -17,11 +18,11 @@ namespace BarterBound.Data.Scenes
         // it will then navigate to the next text block which follows, or will return to the town menu
         // it will get the text blocks via its own named file
 
-        public string TextBlockLocation => $@"..BarterBound/Data/Scenes/TextBlocks/{SceneName}.xml";
+        public string TextBlockLocation => @$"C:\Users\CRPad\source\repos\BarterBound\Data\Scenes\TextBlocks\{SceneName}.xml";
 
-        public virtual string SceneName => "EmptyScene";
+        public virtual string SceneName => "Tutorial";
 
-        private List<TextBlockModel?> TextBlocks = new List<TextBlockModel?>();
+        private TextBlockModel? TextBlocks = new TextBlockModel();
 
         public string CurrentEvent { get; set; }
 
@@ -48,12 +49,17 @@ namespace BarterBound.Data.Scenes
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(TextBlockLocation);
+            XmlNodeList nodes = doc.SelectNodes("//TextBlocks/TextBlock");
             Console.WriteLine(TextBlocks);
         }
 
         protected void DisplayTextBlocks()
         {
-
+            foreach(var text in TextBlocks.TextValues)
+            {
+                WriteLine(text);
+                Thread.Sleep(2000);
+            }
         }
 
         protected void PerformAction()

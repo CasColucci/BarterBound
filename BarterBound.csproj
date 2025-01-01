@@ -11,4 +11,10 @@
     <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\Scenes\TextBlocks\Tutorial.xml">
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
