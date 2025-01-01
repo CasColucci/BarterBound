@@ -8,6 +8,7 @@ namespace BarterBound.Data.Enums
 {
     public enum NextActionEnum
     {
+        OnStart,
         None,
         NamePlayer
 

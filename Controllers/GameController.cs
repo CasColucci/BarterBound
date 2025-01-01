@@ -24,7 +24,7 @@ namespace BarterBound.Controllers
 ▄█████████▀    ███    █▀    ███    ███    ▄████▀     ██████████   ███    ███ ▄█████████▀   ▀██████▀  ████████▀   ▀█   █▀  ████████▀  
                             ███    ███                            ███    ███                                                         
         Welcome to BarterBound! Choose an option with the arrow keys and press enter to select.";
-            List<string> options = new List<string> { "New", "Load", "Exit" };
+            List<string> options = new List<string> { "New", "Admin", "Exit" };
             menuController = new MenuController();
             menuController.Menu(prompt, options);
             int selectedIndex = menuController.Run();
@@ -35,7 +35,7 @@ namespace BarterBound.Controllers
                     StartGame();
                     break;
                 case 1:
-                    LoadGame();
+                    AdminView();
                     break;
                 case 2:
                     ExitGame();
@@ -53,9 +53,26 @@ namespace BarterBound.Controllers
             Environment.Exit(0);
         }
 
-        private void LoadGame()
+        private void AdminView()
         {
-            throw new NotImplementedException();
+            string prompt = "What would you like to do as an admin?";
+            List<string> options = new List<string> { "Create a new Scene", "Exit" };
+            MenuController adminMenuController = new MenuController();
+            adminMenuController.Menu(prompt, options);
+            int selectedIndex = adminMenuController.Run();
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    AdminController adminController = new AdminController();
+                    adminController.CreateScene();
+                    break;
+                case 1:
+                    ExitGame();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void StartGame()
