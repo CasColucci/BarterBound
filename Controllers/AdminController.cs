@@ -2,52 +2,104 @@
 using BarterBound.Data.Enums;
 using BarterBound.Models;
 using static System.Console;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BarterBound.Controllers
 {
     internal class AdminController
     {
-        internal void CreateScene()
+
+        // method that runs the admin controller
+
+        // method that starts a text block with a boolean to determine if it is the first text block
+
+        public void Run()
         {
             Clear();
-            List<TextBlockModel> textBlocks = new List<TextBlockModel>();
-            WriteLine("What would you like to name the scene file? \n Scene File: ");
-            string sceneName = ReadLine();
-            Thread.Sleep(2000);
+            // set up the model for the whole scene file
+            var scene = new List<TextBlockModel>();
 
-            WriteLine("Entering first text block. Beginning with OnStart Text.");
-            NextActionEnum triggerEvent = NextActionEnum.OnStart;
-            Thread.Sleep(2000);
+            // get a name for the file and check that this file is a unique name
+            string sceneName = GetFileName();
 
-            WriteLine("Begin adding TextValues now.");
-            Thread.Sleep(2000);
+            // get the first text block:
+            // AddTextBlock with isFirst as true
 
-            List<string> textValues = GetTextValues();
-             
-            NextActionEnum nextAction = ConvertStringToAction();
+            // add TextValues one at a time
+            // add next Action
+            scene.Add(AddTextBlock(true));
+            
+            // ask if the more inputs
+            var moreBlocksMenu = new MenuController();
+            string prompt = "Would you like to add another input?";
+            List<string> options = new List<string> { "Yes", "No" };
+            moreBlocksMenu.Menu(prompt, options);
 
-            TextBlockModel textBlock = new TextBlockModel { 
-                TextValues = textValues, TriggerEvent = triggerEvent, NextAction = nextAction };
+            var addingMoreBlocks = true;
+            while(addingMoreBlocks)
+            {
+                int selectedIndex = moreBlocksMenu.Run();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        scene.Add(AddTextBlock(false));
+                        break;
+                    case 1:
+                        addingMoreBlocks = false;
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+
+            // save completed scene to the TextBlocks file
+
 
         }
 
-        internal NextActionEnum ConvertStringToAction()
+        private string GetFileName()
         {
-            bool notValid = true;
-            while(notValid)
+            WriteLine("What would you like to name the scene? (This will be the name of the file)");
+
+            var fileName = "EMPTY";
+            var validFile = false;
+
+            while (!validFile)
             {
-                WriteLine("What is the next action to follow this text block?");
-                string nextAction = ReadLine();
-                if(Enum.TryParse(nextAction, out NextActionEnum action))
+                fileName = ReadLine();
+                if (File.Exists($@"~\Data\Scenes\SceneBlocks\{fileName}.xml"))
                 {
-                    return action;
+                    WriteLine("This file name already exists. Please write a new one.");
                 }
                 else
                 {
-                    WriteLine("That doesn't appear to be a valid input. Please try again or add the enum to the available options.")
+                    validFile = true;
                 }
             }
-            throw new NotImplementedException();
+            return fileName;
+        }
+
+        private TextBlockModel AddTextBlock(bool isFirstTextBlock)
+        {
+            var textBlock = new TextBlockModel();
+
+            var triggerEvent = NextActionEnum.OnStart;
+            if (!isFirstTextBlock)
+            {
+                WriteLine("What is the trigger event for this text block?");
+                triggerEvent = ConvertInputToAction();
+            }
+
+            WriteLine("Begin adding TextValues now.");
+            Thread.Sleep(2000);
+            var textValues = GetTextValues();
+
+            WriteLine("What is the Next Action to follow this one?");
+            Thread.Sleep(2000);
+            var nextAction = ConvertInputToAction();
+
+            return textBlock;
         }
 
         private List<string> GetTextValues()
@@ -55,10 +107,10 @@ namespace BarterBound.Controllers
             List<string> textValues = new List<string>();
             var text = "";
 
-            MenuController menuController = new MenuController();
+            MenuController textValueMenuController = new MenuController();
             string prompt = "Is this spoken text or description text?";
             List<string> options = new List<string> { "Spoken", "Description", "Done Adding TextValues" };
-            menuController.Menu(prompt, options);
+            textValueMenuController.Menu(prompt, options);
 
             bool addingText = true;
 
@@ -66,7 +118,7 @@ namespace BarterBound.Controllers
             {
                 text = "";
 
-                int selectedIndex = menuController.Run();
+                int selectedIndex = textValueMenuController.Run();
                 switch (selectedIndex)
                 {
                     case 0:
@@ -88,6 +140,25 @@ namespace BarterBound.Controllers
             }
 
             return textValues;
+        }
+        internal NextActionEnum ConvertInputToAction()
+        {
+            NextActionEnum result = NextActionEnum.None;
+            bool notValid = true;
+            while(notValid)
+            {
+                string input = ReadLine();
+                if(Enum.TryParse(input, out NextActionEnum action))
+                {
+                    result = action;
+                    notValid = false;
+                }
+                else
+                {
+                    WriteLine("That doesn't appear to be a valid input. Please try again or add the enum to the available options.");
+                }
+            }
+            return result;
         }
     }
 }

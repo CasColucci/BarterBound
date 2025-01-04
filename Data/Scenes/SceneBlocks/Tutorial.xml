@@ -1,4 +1,4 @@
-<TextBlocks>
+<Scene>
 	<TextBlock>
       <TriggerEvent>OnStart</TriggerEvent>
       <TextValues>
@@ -47,4 +47,4 @@
 			<TextValue>With your new items packed in your rucksack, you leave your home, ready for what you will face.</TextValue>
 		</TextValues>
 	</TextBlock>
-</TextBlocks>
+</Scene>

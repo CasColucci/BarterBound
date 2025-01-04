@@ -65,7 +65,7 @@ namespace BarterBound.Controllers
             {
                 case 0:
                     AdminController adminController = new AdminController();
-                    adminController.CreateScene();
+                    adminController.Run();
                     break;
                 case 1:
                     ExitGame();

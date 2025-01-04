@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\Scenes\TextBlocks\Tutorial.xml">
+    <None Update="Data\Scenes\SceneBlocks\Tutorial.xml">
       <CopyToOutputDirectory>true</CopyToOutputDirectory>
     </None>
   </ItemGroup>
