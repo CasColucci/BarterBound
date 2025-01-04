@@ -1,6 +1,8 @@
 ﻿
 using BarterBound.Data.Enums;
+using BarterBound.Data.Scenes;
 using BarterBound.Models;
+using System.Xml;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -8,31 +10,33 @@ namespace BarterBound.Controllers
 {
     internal class AdminController
     {
-
         // method that runs the admin controller
 
         // method that starts a text block with a boolean to determine if it is the first text block
+        private static string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
+
+        private string relativePath = Path.Combine(baseDirectory, $@"Data\Scenes\SceneBlocks");
 
         public void Run()
         {
             Clear();
             // set up the model for the whole scene file
-            var scene = new List<TextBlockModel>();
+            var sceneBlock = new List<TextBlockModel>();
 
             // get a name for the file and check that this file is a unique name
-            string sceneName = GetFileName();
+            var sceneName = GetFileName();
 
             // get the first text block:
             // AddTextBlock with isFirst as true
 
             // add TextValues one at a time
             // add next Action
-            scene.Add(AddTextBlock(true));
+            sceneBlock.Add(AddTextBlock(true));
             
             // ask if the more inputs
             var moreBlocksMenu = new MenuController();
-            string prompt = "Would you like to add another input?";
-            List<string> options = new List<string> { "Yes", "No" };
+            var prompt = "Would you like to add another input?";
+            var options = new List<string> { "Yes", "No" }; 
             moreBlocksMenu.Menu(prompt, options);
 
             var addingMoreBlocks = true;
@@ -42,7 +46,7 @@ namespace BarterBound.Controllers
                 switch (selectedIndex)
                 {
                     case 0:
-                        scene.Add(AddTextBlock(false));
+                        sceneBlock.Add(AddTextBlock(false));
                         break;
                     case 1:
                         addingMoreBlocks = false;
@@ -53,8 +57,11 @@ namespace BarterBound.Controllers
                 }
             }
 
+            WriteLine("Saving the values to the file!");
+            Thread.Sleep(2000);
             // save completed scene to the TextBlocks file
 
+            WriteFile(sceneName, sceneBlock);
 
         }
 
@@ -62,15 +69,22 @@ namespace BarterBound.Controllers
         {
             WriteLine("What would you like to name the scene? (This will be the name of the file)");
 
-            var fileName = "EMPTY";
+            var fileName = "";
             var validFile = false;
+            
 
             while (!validFile)
             {
                 fileName = ReadLine();
-                if (File.Exists($@"~\Data\Scenes\SceneBlocks\{fileName}.xml"))
+                var filePath = Path.Combine(relativePath, $"{fileName}.xml");
+                var exists = File.Exists(filePath);
+                if (exists)
                 {
                     WriteLine("This file name already exists. Please write a new one.");
+                }
+                else if (fileName == null)
+                {
+                    WriteLine("Please enter a value");
                 }
                 else
                 {
@@ -141,7 +155,7 @@ namespace BarterBound.Controllers
 
             return textValues;
         }
-        internal NextActionEnum ConvertInputToAction()
+        private NextActionEnum ConvertInputToAction()
         {
             NextActionEnum result = NextActionEnum.None;
             bool notValid = true;
@@ -159,6 +173,16 @@ namespace BarterBound.Controllers
                 }
             }
             return result;
+        }
+
+        private void WriteFile(string sceneName, List<TextBlockModel> sceneBlock)
+        {
+            var scenePath = Path.Combine(relativePath, $"{sceneName}.xml");
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            XmlWriter writer = XmlWriter.Create(scenePath, settings);
+
+            
         }
     }
 }
