@@ -12,7 +12,7 @@ namespace BarterBound.Data.Scenes
     {
        public static string SceneName => "Tutorial";
 
-       private List<TextBlockModel?> TextBlocks = new List<TextBlockModel?>();
+       private List<TextBlock?> TextBlocks = new List<TextBlock?>();
 
         public void Run()
         {

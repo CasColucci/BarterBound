@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Models
 {
-    internal class TextBlockModel
+    public class TextBlock
     {
         public NextActionEnum TriggerEvent { get; set; }
 

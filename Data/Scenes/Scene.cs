@@ -22,7 +22,7 @@ namespace BarterBound.Data.Scenes
 
         public virtual string SceneName => "Tutorial";
 
-        private TextBlockModel? TextBlocks = new TextBlockModel();
+        private TextBlock? TextBlocks = new TextBlock();
 
         public string CurrentEvent { get; set; }
 

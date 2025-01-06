@@ -3,6 +3,7 @@ using BarterBound.Data.Enums;
 using BarterBound.Data.Scenes;
 using BarterBound.Models;
 using System.Xml;
+using System.Xml.Serialization;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -21,7 +22,7 @@ namespace BarterBound.Controllers
         {
             Clear();
             // set up the model for the whole scene file
-            var sceneBlock = new List<TextBlockModel>();
+            var sceneBlock = new SceneBlock();
 
             // get a name for the file and check that this file is a unique name
             var sceneName = GetFileName();
@@ -31,7 +32,7 @@ namespace BarterBound.Controllers
 
             // add TextValues one at a time
             // add next Action
-            sceneBlock.Add(AddTextBlock(true));
+            sceneBlock.TextBlocks.Add(AddTextBlock(true));
             
             // ask if the more inputs
             var moreBlocksMenu = new MenuController();
@@ -46,7 +47,7 @@ namespace BarterBound.Controllers
                 switch (selectedIndex)
                 {
                     case 0:
-                        sceneBlock.Add(AddTextBlock(false));
+                        sceneBlock.TextBlocks.Add(AddTextBlock(false));
                         break;
                     case 1:
                         addingMoreBlocks = false;
@@ -94,9 +95,9 @@ namespace BarterBound.Controllers
             return fileName;
         }
 
-        private TextBlockModel AddTextBlock(bool isFirstTextBlock)
+        private TextBlock AddTextBlock(bool isFirstTextBlock)
         {
-            var textBlock = new TextBlockModel();
+            var textBlock = new TextBlock();
 
             var triggerEvent = NextActionEnum.OnStart;
             if (!isFirstTextBlock)
@@ -109,9 +110,13 @@ namespace BarterBound.Controllers
             Thread.Sleep(2000);
             var textValues = GetTextValues();
 
+            textBlock.TextValues = textValues;
+
             WriteLine("What is the Next Action to follow this one?");
             Thread.Sleep(2000);
             var nextAction = ConvertInputToAction();
+
+            textBlock.NextAction = nextAction;
 
             return textBlock;
         }
@@ -155,6 +160,7 @@ namespace BarterBound.Controllers
 
             return textValues;
         }
+
         private NextActionEnum ConvertInputToAction()
         {
             NextActionEnum result = NextActionEnum.None;
@@ -175,14 +181,27 @@ namespace BarterBound.Controllers
             return result;
         }
 
-        private void WriteFile(string sceneName, List<TextBlockModel> sceneBlock)
+        private void WriteFile(string sceneName, SceneBlock sceneBlock)
         {
             var scenePath = Path.Combine(relativePath, $"{sceneName}.xml");
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
-            XmlWriter writer = XmlWriter.Create(scenePath, settings);
+            settings.NewLineOnAttributes = true;
 
-            
+
+            try
+            {
+                using(XmlWriter writer = XmlWriter.Create(scenePath, settings))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(SceneBlock));
+                    xmlSerializer.Serialize(writer, sceneBlock);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("An error occured", ex);
+            }
+
         }
     }
 }
