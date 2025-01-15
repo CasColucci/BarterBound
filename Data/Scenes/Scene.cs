@@ -18,7 +18,9 @@ namespace BarterBound.Data.Scenes
         // it will then navigate to the next text block which follows, or will return to the town menu
         // it will get the text blocks via its own named file
 
-        public string TextBlockLocation => @$"C:\Users\CRPad\source\repos\BarterBound\Data\Scenes\TextBlocks\{SceneName}.xml";
+        private static string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
+
+        private string relativePath => Path.Combine(baseDirectory, $@"Data\Scenes\SceneBlocks\{SceneName}.xml");
 
         public virtual string SceneName => "Tutorial";
 
@@ -47,10 +49,7 @@ namespace BarterBound.Data.Scenes
         
         protected void LoadTextBlocks()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(TextBlockLocation);
-            XmlNodeList nodes = doc.SelectNodes("//TextBlocks/TextBlock");
-            Console.WriteLine(TextBlocks);
+
         }
 
         protected void DisplayTextBlocks()

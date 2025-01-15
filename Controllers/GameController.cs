@@ -1,4 +1,5 @@
 ﻿using BarterBound.Data.Scenes;
+using BarterBound.Services;
 using static System.Console;
 
 namespace BarterBound.Controllers
@@ -64,7 +65,9 @@ namespace BarterBound.Controllers
             switch (selectedIndex)
             {
                 case 0:
-                    AdminController adminController = new AdminController();
+                    var fileService = new FileService();
+                    var console = new ConsoleService();
+                    AdminController adminController = new AdminController(fileService, console);
                     adminController.Run();
                     break;
                 case 1:

@@ -6,17 +6,27 @@ using System.Xml;
 using System.Xml.Serialization;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
+using BarterBound.Services;
+using System;
 
 namespace BarterBound.Controllers
 {
-    internal class AdminController
+    public class AdminController
     {
         // method that runs the admin controller
+        private readonly IFileService _fileService;
+        private readonly IConsoleService _console;
 
         // method that starts a text block with a boolean to determine if it is the first text block
         private static string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
 
         private string relativePath = Path.Combine(baseDirectory, $@"Data\Scenes\SceneBlocks");
+
+        internal AdminController(IFileService fileService, IConsoleService console)
+        {
+            _fileService = fileService;
+            _console = console;
+        }
 
         public void Run()
         {
