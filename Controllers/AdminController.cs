@@ -22,7 +22,7 @@ namespace BarterBound.Controllers
 
         private string relativePath = Path.Combine(baseDirectory, $@"Data\Scenes\SceneBlocks");
 
-        internal AdminController(IFileService fileService, IConsoleService console)
+        public AdminController(IFileService fileService, IConsoleService console)
         {
             _fileService = fileService;
             _console = console;

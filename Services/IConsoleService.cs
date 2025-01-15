@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Services
 {
-    interface IConsoleService
+    public interface IConsoleService
     {
         void Write(string message);
 
