@@ -8,6 +8,8 @@ namespace BarterBound.Services.Interfaces
 {
     public interface IConsoleService
     {
+        ConsoleColor ForegroundColor { get; set; }
+
         void Write(string message);
 
         void WriteLine(string message);
