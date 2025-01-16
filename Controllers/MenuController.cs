@@ -6,7 +6,7 @@ namespace BarterBound.Controllers
     public class MenuController
     {
         private readonly IConsoleService _console;
-        private readonly IConsoleInputService _consoleInputService;
+        private readonly IConsoleInputService _consoleInput;
 
         private int _selectedIndex;
         private List<string> _options = new List<string>();
@@ -15,7 +15,7 @@ namespace BarterBound.Controllers
         public MenuController(IConsoleService console, IConsoleInputService consoleInputService)
         {
             _console = console;
-            _consoleInputService = consoleInputService;
+            _consoleInput = consoleInputService;
         }
 
         public void Menu(string prompt, List<string> options)
@@ -32,7 +32,7 @@ namespace BarterBound.Controllers
             {
                 _console.Clear();
                 DisplayOptions();
-                ConsoleKeyInfo keyInfo = _consoleInputService.ReadKey(true);
+                ConsoleKeyInfo keyInfo = _consoleInput.ReadKey(true);
                 keyPressed = keyInfo.Key;
 
                 if (keyPressed == ConsoleKey.UpArrow)

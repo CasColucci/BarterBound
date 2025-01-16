@@ -15,7 +15,7 @@ namespace BarterBound.Controllers
     public class AdminController
     {
         // method that runs the admin controller
-        private readonly IFileService _fileService;
+        private readonly IFileService _file;
         private readonly IConsoleService _console;
 
         // method that starts a text block with a boolean to determine if it is the first text block
@@ -25,7 +25,7 @@ namespace BarterBound.Controllers
 
         public AdminController(IFileService fileService, IConsoleService console)
         {
-            _fileService = fileService;
+            _file = fileService;
             _console = console;
         }
 
@@ -46,7 +46,7 @@ namespace BarterBound.Controllers
             sceneBlock.TextBlocks.Add(AddTextBlock(true));
             
             // ask if the more inputs
-            var moreBlocksMenu = new MenuController(new ConsoleService());
+            var moreBlocksMenu = new MenuController(new ConsoleService(), new ConsoleInputService());
             var prompt = "Would you like to add another input?";
             var options = new List<string> { "Yes", "No" }; 
             moreBlocksMenu.Menu(prompt, options);
@@ -87,16 +87,16 @@ namespace BarterBound.Controllers
 
             while (!validFile)
             {
-                fileName = ReadLine();
+                fileName = _console.ReadLine();
                 var filePath = Path.Combine(relativePath, $"{fileName}.xml");
-                var exists = File.Exists(filePath);
+                var exists = _file.Exists(filePath);
                 if (exists)
                 {
-                    WriteLine("This file name already exists. Please write a new one.");
+                    _console.WriteLine("This file name already exists. Please write a new one.");
                 }
                 else if (fileName == null)
                 {
-                    WriteLine("Please enter a value");
+                    _console.WriteLine("Please enter a value");
                 }
                 else
                 {
@@ -113,17 +113,17 @@ namespace BarterBound.Controllers
             var triggerEvent = NextActionEnum.OnStart;
             if (!isFirstTextBlock)
             {
-                WriteLine("What is the trigger event for this text block?");
+                _console.WriteLine("What is the trigger event for this text block?");
                 triggerEvent = ConvertInputToAction();
             }
 
-            WriteLine("Begin adding TextValues now.");
+            _console.WriteLine("Begin adding TextValues now.");
             Thread.Sleep(2000);
             var textValues = GetTextValues();
 
             textBlock.TextValues = textValues;
 
-            WriteLine("What is the Next Action to follow this one?");
+            _console.WriteLine("What is the Next Action to follow this one?");
             Thread.Sleep(2000);
             var nextAction = ConvertInputToAction();
 
@@ -137,7 +137,7 @@ namespace BarterBound.Controllers
             List<string> textValues = new List<string>();
             var text = "";
 
-            MenuController textValueMenuController = new MenuController();
+            MenuController textValueMenuController = new MenuController(new ConsoleService(), new ConsoleInputService());
             string prompt = "Is this spoken text or description text?";
             List<string> options = new List<string> { "Spoken", "Description", "Done Adding TextValues" };
             textValueMenuController.Menu(prompt, options);
@@ -152,12 +152,12 @@ namespace BarterBound.Controllers
                 switch (selectedIndex)
                 {
                     case 0:
-                        WriteLine("Enter the spoken text: ");
+                        _console.WriteLine("Enter the spoken text: ");
                         text += "/s" + ReadLine();
                         textValues.Add(text);
                         break;
                     case 1:
-                        WriteLine("Enter the description text: ");
+                        _console.WriteLine("Enter the description text: ");
                         text += "/d" + ReadLine();
                         textValues.Add(text);
                         break;
@@ -186,7 +186,7 @@ namespace BarterBound.Controllers
                 }
                 else
                 {
-                    WriteLine("That doesn't appear to be a valid input. Please try again or add the enum to the available options.");
+                    _console.WriteLine("That doesn't appear to be a valid input. Please try again or add the enum to the available options.");
                 }
             }
             return result;

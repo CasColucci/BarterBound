@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BarterBound.Services.Interfaces;
 public interface IFileService
 {
-    bool FileExists(string path);
+    bool Exists(string filePath);
     void WriteFile(string path);
 
 }
