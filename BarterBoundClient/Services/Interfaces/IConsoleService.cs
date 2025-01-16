@@ -14,7 +14,7 @@ namespace BarterBound.Services.Interfaces
 
         void WriteLine(string message);
 
-        string ReadLine();
+        string? ReadLine();
 
         void ResetColor();
 

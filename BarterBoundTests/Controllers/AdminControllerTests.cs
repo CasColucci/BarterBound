@@ -11,7 +11,7 @@ namespace BarterBound.Tests.Controllers
     public class AdminControllerTests
     {
         [Test]
-        public void Run_ExpectWhenCalled_SceneBlockIsMade()
+        public void GetFileName_WhenFileAlreadyExists_ExpectThisFileNameAlreadyExists()
         {
             var _fileService = new FileServiceTestable();
             var _console = new ConsoleServiceTestable();

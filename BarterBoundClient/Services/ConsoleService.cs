@@ -6,30 +6,30 @@ namespace BarterBound.Services;
 
 internal class ConsoleService : IConsoleService
 {
-    public ConsoleColor ForegroundColor { get => ForegroundColor; set => ForegroundColor = value; }
+    public ConsoleColor ForegroundColor { get => Console.ForegroundColor; set => Console.ForegroundColor = value; }
 
     public void WriteLine(string message)
     {
-        WriteLine(message);
+        Console.WriteLine(message);
     }
 
     public void Write(string message)
     {
-        Write(message);
+        Console.Write(message);
     }
 
-    public string ReadLine()
+    public string? ReadLine()
     {
-        return ReadLine();
+        return Console.ReadLine();
     }
 
     public void ResetColor()
     {
-        ResetColor();
+        Console.ResetColor();
     }
 
     public void Clear()
     {
-        Clear();
+        Console.Clear();
     }
 }

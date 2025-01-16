@@ -4,6 +4,8 @@ namespace BarterBound.Tests.Controllers.ServicesTestable
 {
     public class ConsoleServiceTestable : IConsoleService
     {
+        public string ToRead { get; set; } = "";
+
         public ConsoleColor ForegroundColor { get; set; }
 
         public void Write(string message)
@@ -18,7 +20,7 @@ namespace BarterBound.Tests.Controllers.ServicesTestable
 
         public string ReadLine()
         {
-            return "";
+            return ToRead;
         }
 
         public void ResetColor()

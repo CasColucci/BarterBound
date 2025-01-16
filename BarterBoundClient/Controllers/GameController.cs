@@ -14,6 +14,8 @@ namespace BarterBound.Controllers
 
         public void Run()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.SetWindowSize(140, 30);
             string prompt = @"
 ▀█████████▄     ▄████████    ▄████████     ███        ▄████████    ▄████████ ▀█████████▄   ▄██████▄  ███    █▄  ███▄▄▄▄   ████████▄  
   ███    ███   ███    ███   ███    ███ ▀█████████▄   ███    ███   ███    ███   ███    ███ ███    ███ ███    ███ ███▀▀▀██▄ ███   ▀███ 
@@ -26,7 +28,7 @@ namespace BarterBound.Controllers
                             ███    ███                            ███    ███                                                         
         Welcome to BarterBound! Choose an option with the arrow keys and press enter to select.";
             List<string> options = new List<string> { "New", "Admin", "Exit" };
-            menuController = new MenuController();
+            menuController = new MenuController(new ConsoleService(), new ConsoleInputService());
             menuController.Menu(prompt, options);
             int selectedIndex = menuController.Run();
 
@@ -58,7 +60,7 @@ namespace BarterBound.Controllers
         {
             string prompt = "What would you like to do as an admin?";
             List<string> options = new List<string> { "Create a new Scene", "Exit" };
-            MenuController adminMenuController = new MenuController();
+            MenuController adminMenuController = new MenuController(new ConsoleService(), new ConsoleInputService());
             adminMenuController.Menu(prompt, options);
             int selectedIndex = adminMenuController.Run();
 
