@@ -2,7 +2,7 @@
 
 namespace BarterBound.Tests.Controllers.ServicesTestable
 {
-    public class ConsoleServiceTestable : IConsole
+    public class ConsoleTestable : IConsole
     {
         public string ToRead { get; set; } = "";
 

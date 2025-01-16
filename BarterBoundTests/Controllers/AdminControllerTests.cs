@@ -14,8 +14,8 @@ namespace BarterBound.Tests.Controllers
         [Test]
         public void GetFileName_WhenFileAlreadyExists_ExpectThisFileNameAlreadyExists()
         {
-            var _fileService = new FileServiceTestable();
-            var _console = new ConsoleServiceTestable();
+            var _fileService = new FileTestable();
+            var _console = new ConsoleTestable();
             _console.ToRead = "Exists";
             
 

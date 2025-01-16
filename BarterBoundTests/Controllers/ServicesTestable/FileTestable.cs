@@ -2,7 +2,7 @@
 
 namespace BarterBound.Tests.Controllers.ServicesTestable
 {
-    internal class FileServiceTestable : IFile
+    internal class FileTestable : IFile
     {
         public List<string> SavedFiles { get; set; } = new List<string>();
 

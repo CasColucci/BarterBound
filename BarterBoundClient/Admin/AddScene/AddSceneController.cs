@@ -16,7 +16,6 @@ namespace BarterBound.Admin.AddScene
     public class AddSceneController
     {
         // method that runs the admin controller
-        private readonly IFile _file;
         private readonly IConsole _console;
 
         // method that starts a text block with a boolean to determine if it is the first text block
@@ -24,9 +23,8 @@ namespace BarterBound.Admin.AddScene
 
         private string relativePath = Path.Combine(baseDirectory, $@"Data\Scenes\SceneBlocks");
 
-        public AddSceneController(IFile fileService, IConsole console)
+        public AddSceneController(IConsole console)
         {
-            _file = fileService;
             _console = console;
         }
 
