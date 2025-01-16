@@ -1,8 +1,8 @@
-﻿using BarterBound.Services.Interfaces;
+﻿using BarterBound.Core.Interfaces;
 
 namespace BarterBound.Tests.Controllers.ServicesTestable
 {
-    internal class FileServiceTestable : IFileService
+    internal class FileServiceTestable : IFile
     {
         public List<string> SavedFiles { get; set; } = new List<string>();
 

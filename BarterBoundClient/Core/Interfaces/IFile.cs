@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarterBound.Services.Interfaces;
-public interface IFileService
+namespace BarterBound.Core.Interfaces;
+public interface IFile
 {
     bool Exists(string filePath);
     void WriteFile(string path);

@@ -7,23 +7,24 @@ using System.Xml.Serialization;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
 using System;
-using BarterBound.Services.Interfaces;
-using BarterBound.Services;
+using BarterBound.Controllers.Menu;
+using BarterBound.Core.Interfaces;
+using BarterBound.Core.Wrapper;
 
-namespace BarterBound.Controllers
+namespace BarterBound.Admin.AddScene
 {
-    public class AdminController
+    public class AddSceneController
     {
         // method that runs the admin controller
-        private readonly IFileService _file;
-        private readonly IConsoleService _console;
+        private readonly IFile _file;
+        private readonly IConsole _console;
 
         // method that starts a text block with a boolean to determine if it is the first text block
         private static string baseDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
 
         private string relativePath = Path.Combine(baseDirectory, $@"Data\Scenes\SceneBlocks");
 
-        public AdminController(IFileService fileService, IConsoleService console)
+        public AddSceneController(IFile fileService, IConsole console)
         {
             _file = fileService;
             _console = console;
@@ -31,7 +32,7 @@ namespace BarterBound.Controllers
 
         public void Run()
         {
-            Clear();
+            _console.Clear();
             // set up the model for the whole scene file
             var sceneBlock = new SceneBlock();
 
@@ -44,15 +45,15 @@ namespace BarterBound.Controllers
             // add TextValues one at a time
             // add next Action
             sceneBlock.TextBlocks.Add(AddTextBlock(true));
-            
+
             // ask if the more inputs
-            var moreBlocksMenu = new MenuController(new ConsoleService(), new ConsoleInputService());
+            var moreBlocksMenu = new MenuController(new ConsoleWrapper());
             var prompt = "Would you like to add another input?";
-            var options = new List<string> { "Yes", "No" }; 
+            var options = new List<string> { "Yes", "No" };
             moreBlocksMenu.Menu(prompt, options);
 
             var addingMoreBlocks = true;
-            while(addingMoreBlocks)
+            while (addingMoreBlocks)
             {
                 int selectedIndex = moreBlocksMenu.Run();
                 switch (selectedIndex)
@@ -83,7 +84,7 @@ namespace BarterBound.Controllers
 
             var fileName = "";
             var validFile = false;
-            
+
 
             while (!validFile)
             {
@@ -137,7 +138,7 @@ namespace BarterBound.Controllers
             List<string> textValues = new List<string>();
             var text = "";
 
-            MenuController textValueMenuController = new MenuController(new ConsoleService(), new ConsoleInputService());
+            MenuController textValueMenuController = new MenuController(new ConsoleWrapper());
             string prompt = "Is this spoken text or description text?";
             List<string> options = new List<string> { "Spoken", "Description", "Done Adding TextValues" };
             textValueMenuController.Menu(prompt, options);
@@ -176,10 +177,10 @@ namespace BarterBound.Controllers
         {
             NextActionEnum result = NextActionEnum.None;
             bool notValid = true;
-            while(notValid)
+            while (notValid)
             {
                 string input = ReadLine();
-                if(Enum.TryParse(input, out NextActionEnum action))
+                if (Enum.TryParse(input, out NextActionEnum action))
                 {
                     result = action;
                     notValid = false;
@@ -202,13 +203,13 @@ namespace BarterBound.Controllers
 
             try
             {
-                using(XmlWriter writer = XmlWriter.Create(scenePath, settings))
+                using (XmlWriter writer = XmlWriter.Create(scenePath, settings))
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(SceneBlock));
                     xmlSerializer.Serialize(writer, sceneBlock);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("An error occured", ex);
             }

@@ -1,10 +1,10 @@
 ﻿
-using BarterBound.Services.Interfaces;
+using BarterBound.Core.Interfaces;
 using static System.Console;
 
-namespace BarterBound.Services;
+namespace BarterBound.Core.Wrapper;
 
-internal class ConsoleService : IConsoleService
+internal class ConsoleWrapper : IConsole
 {
     public ConsoleColor ForegroundColor { get => Console.ForegroundColor; set => Console.ForegroundColor = value; }
 
@@ -31,5 +31,10 @@ internal class ConsoleService : IConsoleService
     public void Clear()
     {
         Console.Clear();
+    }
+
+    public ConsoleKeyInfo ReadKey(bool intercept)
+    {
+        return Console.ReadKey(intercept);
     }
 }

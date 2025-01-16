@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarterBound.Services
+namespace BarterBound.Tests.Controllers.Admin
 {
-    internal class FileService
+    internal class FileManagementControllerTests
     {
     }
 }

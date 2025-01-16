@@ -1,8 +1,8 @@
-﻿using BarterBound.Services.Interfaces;
+﻿using BarterBound.Core.Interfaces;
 
 namespace BarterBound.Tests.Controllers.ServicesTestable
 {
-    public class ConsoleServiceTestable : IConsoleService
+    public class ConsoleServiceTestable : IConsole
     {
         public string ToRead { get; set; } = "";
 

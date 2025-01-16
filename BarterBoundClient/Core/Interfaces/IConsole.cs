@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarterBound.Services.Interfaces
+namespace BarterBound.Core.Interfaces
 {
-    public interface IConsoleService
+    public interface IConsole
     {
         ConsoleColor ForegroundColor { get; set; }
 
@@ -19,5 +19,6 @@ namespace BarterBound.Services.Interfaces
         void ResetColor();
 
         void Clear();
+        ConsoleKeyInfo ReadKey(bool intercept);
     }
 }

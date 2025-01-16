@@ -1,4 +1,7 @@
-﻿using BarterBound.Data.Scenes;
+﻿using BarterBound.Admin.AddScene;
+using BarterBound.Controllers.Menu;
+using BarterBound.Core.Wrapper;
+using BarterBound.Data.Scenes;
 using BarterBound.Services;
 using static System.Console;
 
@@ -28,7 +31,7 @@ namespace BarterBound.Controllers
                             ███    ███                            ███    ███                                                         
         Welcome to BarterBound! Choose an option with the arrow keys and press enter to select.";
             List<string> options = new List<string> { "New", "Admin", "Exit" };
-            menuController = new MenuController(new ConsoleService(), new ConsoleInputService());
+            menuController = new MenuController(new ConsoleWrapper());
             menuController.Menu(prompt, options);
             int selectedIndex = menuController.Run();
 
@@ -60,7 +63,7 @@ namespace BarterBound.Controllers
         {
             string prompt = "What would you like to do as an admin?";
             List<string> options = new List<string> { "Create a new Scene", "Exit" };
-            MenuController adminMenuController = new MenuController(new ConsoleService(), new ConsoleInputService());
+            MenuController adminMenuController = new MenuController(new ConsoleWrapper());
             adminMenuController.Menu(prompt, options);
             int selectedIndex = adminMenuController.Run();
 
@@ -68,8 +71,8 @@ namespace BarterBound.Controllers
             {
                 case 0:
                     var fileService = new FileService();
-                    var console = new ConsoleService();
-                    AdminController adminController = new AdminController(fileService, console);
+                    var console = new ConsoleWrapper();
+                    AddSceneController adminController = new AddSceneController(fileService, console); 
                     adminController.Run();
                     break;
                 case 1:

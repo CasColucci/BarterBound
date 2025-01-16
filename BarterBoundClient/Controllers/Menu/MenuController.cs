@@ -1,21 +1,20 @@
-﻿using BarterBound.Services.Interfaces;
+﻿using BarterBound.Core.Interfaces;
+using BarterBound.Services.Interfaces;
 using static System.Console;
 
-namespace BarterBound.Controllers
+namespace BarterBound.Controllers.Menu
 {
     public class MenuController
     {
-        private readonly IConsoleService _console;
-        private readonly IConsoleInputService _consoleInput;
+        private readonly IConsole _console;
 
         private int _selectedIndex;
         private List<string> _options = new List<string>();
         private string _prompt = "";
 
-        public MenuController(IConsoleService console, IConsoleInputService consoleInputService)
+        public MenuController(IConsole console)
         {
             _console = console;
-            _consoleInput = consoleInputService;
         }
 
         public void Menu(string prompt, List<string> options)
@@ -32,7 +31,7 @@ namespace BarterBound.Controllers
             {
                 _console.Clear();
                 DisplayOptions();
-                ConsoleKeyInfo keyInfo = _consoleInput.ReadKey(true);
+                ConsoleKeyInfo keyInfo = _console.ReadKey(true);
                 keyPressed = keyInfo.Key;
 
                 if (keyPressed == ConsoleKey.UpArrow)
