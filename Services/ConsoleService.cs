@@ -1,4 +1,5 @@
 ﻿
+using BarterBound.Services.Interfaces;
 using static System.Console;
 
 namespace BarterBound.Services;
@@ -18,5 +19,15 @@ internal class ConsoleService : IConsoleService
     public string ReadLine()
     {
         return ReadLine();
+    }
+
+    public void ResetColor()
+    {
+        ResetColor();
+    }
+
+    public void Clear()
+    {
+        Clear();
     }
 }

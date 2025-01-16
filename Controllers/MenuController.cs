@@ -1,12 +1,20 @@
-﻿using static System.Console;
+﻿using BarterBound.Services.Interfaces;
+using static System.Console;
 
 namespace BarterBound.Controllers
 {
-    public class MenuController : IMenuController
+    public class MenuController
     {
+        private readonly IConsoleService _console;
+
         private int _selectedIndex;
-        private List<string> _options;
-        private string _prompt;
+        private List<string> _options = new List<string>();
+        private string _prompt = "";
+
+        public MenuController(IConsoleService console)
+        {
+            _console = console;
+        }
 
         public void Menu(string prompt, List<string> options)
         {
@@ -48,7 +56,7 @@ namespace BarterBound.Controllers
 
         private void DisplayOptions()
         {
-            Console.WriteLine(_prompt);
+            _console.WriteLine(_prompt);
             for (int i = 0; i < _options.Count; i++)
             {
                 string currentOption = _options[i];
@@ -65,9 +73,9 @@ namespace BarterBound.Controllers
                     ForegroundColor = ConsoleColor.White;
                 }
 
-                WriteLine($"{prefix} << {currentOption} >>");
+                _console.WriteLine($"{prefix} << {currentOption} >>");
             }
-            ResetColor();
+            _console.ResetColor();
         }
 
     }

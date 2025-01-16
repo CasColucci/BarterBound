@@ -6,8 +6,9 @@ using System.Xml;
 using System.Xml.Serialization;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
-using BarterBound.Services;
 using System;
+using BarterBound.Services.Interfaces;
+using BarterBound.Services;
 
 namespace BarterBound.Controllers
 {
@@ -45,7 +46,7 @@ namespace BarterBound.Controllers
             sceneBlock.TextBlocks.Add(AddTextBlock(true));
             
             // ask if the more inputs
-            var moreBlocksMenu = new MenuController();
+            var moreBlocksMenu = new MenuController(new ConsoleService());
             var prompt = "Would you like to add another input?";
             var options = new List<string> { "Yes", "No" }; 
             moreBlocksMenu.Menu(prompt, options);
