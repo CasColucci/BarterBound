@@ -9,30 +9,26 @@ namespace BarterBound.Tests.Controllers.Admin;
 internal class FileManagementControllerTests
 {
     [Test]
-    public void TestFileExists_ReturnsFalse_WhenFileDoesntExist()
+    public void FileExists_WhenFileDoesntExist_ExpectFalse()
     {
-        var fileWrapper = new FileTestable();
+        var serializer = new XmlSerializerTestable();
+        var fileManagementController = new FileManagementController(serializer);
 
-        var fileManagementController = new FileManagementController(fileWrapper);
+        var sceneName = "SceneDoesntExist.xml";
 
-        var sceneName = "SceneDoesntExist";
-
-        Assert.That(fileManagementController.FileExists(sceneName), Is.False, "");
+        Assert.That(fileManagementController.FileExists(sceneName), Is.False, "Scene doesn't exist and therefore should return false when checked");
     }
+
     [Test]
-    public void TestFileExists_ReturnsTrue_WhenFileExists()
+    public void FileExists_WhenFileExists_ExpectTrue()
     {
-        var fileWrapper = new FileTestable();
+        var serializer = new XmlSerializerTestable();
+        var fileManagementController = new FileManagementController(serializer);
 
-        var fileManagementController = new FileManagementController(fileWrapper);
+        var sceneName = "SceneExists.xml";
 
-        var sceneName = "SceneExists";
-        var sceneBlock = new Scene();
-
-        fileManagementController.WriteFile(sceneName, sceneBlock);
-
-
-        Assert.That(fileManagementController.FileExists(sceneName), Is.True, "");
-
+        Assert.That(fileManagementController.FileExists(sceneName), Is.True, "Scene does exist and therefore should return true when checked");
     }
+
+
 }

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BarterBound.Core.Interfaces;
-public interface IFile
+
+public interface IXmlSerializer
 {
-    bool Exists(string filePath);
-    void WriteFile(string path);
-
+    void Serialize(Type type, XmlWriter xmlWriter, object? obj);
 }
-

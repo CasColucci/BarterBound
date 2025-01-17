@@ -5,28 +5,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace BarterBound.Admin.AddScene
 {
     public class FileManagementController
     {
-        private readonly IFile _file;
+        private readonly IXmlSerializer _serializer;
 
-        public FileManagementController(IFile file)
+        public FileManagementController(IXmlSerializer xmlSerializer)
         {
-            _file = file;
+            _serializer = xmlSerializer;
         }
 
         public bool FileExists(string sceneName)
         {
-            throw new NotImplementedException();
+            return File.Exists(sceneName);
         }
 
-        public void WriteFile(string fileName, object? fileContents)
+        public void WriteFile(Type type, string fileName, object? fileContents)
         {
-            throw new NotImplementedException();
+            using (XmlWriter writer = XmlWriter.Create(fileName))
+            {
+                _serializer.Serialize(type, writer, fileContents);
+            }
         }
-
 
     }
 }
