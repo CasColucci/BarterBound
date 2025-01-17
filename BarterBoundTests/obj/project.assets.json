@@ -1157,7 +1157,6 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "BarterBound >= 1.0.0",
-      "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBound\\BarterBound.csproj",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Moq >= 4.20.72",
       "NUnit >= 3.14.0",
@@ -1167,25 +1166,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cc115208\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\CRPad\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBoundTests\\BarterBound.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\CRPad\\source\\repos\\BarterBound\\BarterBoundTests\\BarterBound.Tests.csproj",
       "projectName": "BarterBound.Tests",
-      "projectPath": "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBoundTests\\BarterBound.Tests.csproj",
-      "packagesPath": "C:\\Users\\cc115208\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBoundTests\\obj\\",
+      "projectPath": "C:\\Users\\CRPad\\source\\repos\\BarterBound\\BarterBoundTests\\BarterBound.Tests.csproj",
+      "packagesPath": "C:\\Users\\CRPad\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CRPad\\source\\repos\\BarterBound\\BarterBoundTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\cc115208\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CRPad\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1193,18 +1195,14 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBoundClient\\BarterBound.csproj": {
-              "projectPath": "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBoundClient\\BarterBound.csproj"
-            },
-            "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBound\\BarterBound.csproj": {
-              "projectPath": "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBound\\BarterBound.csproj"
+            "C:\\Users\\CRPad\\source\\repos\\BarterBound\\BarterBoundClient\\BarterBound.csproj": {
+              "projectPath": "C:\\Users\\CRPad\\source\\repos\\BarterBound\\BarterBoundClient\\BarterBound.csproj"
             }
           }
         }
@@ -1218,8 +1216,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -1266,19 +1263,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBound\\BarterBound.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\cc115208\\Documents\\Example Projects\\BarterBound\\BarterBound\\BarterBound.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

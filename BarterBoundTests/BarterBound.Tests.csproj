@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BarterBoundClient\BarterBound.csproj" />
-    <ProjectReference Include="..\BarterBound\BarterBound.csproj" />
   </ItemGroup>
 
   <ItemGroup>

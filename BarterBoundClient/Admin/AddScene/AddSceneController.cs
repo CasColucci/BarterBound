@@ -32,7 +32,7 @@ namespace BarterBound.Admin.AddScene
         {
             _console.Clear();
             // set up the model for the whole scene file
-            var sceneBlock = new SceneBlock();
+            var sceneBlock = new Models.Scene();
 
             // get a name for the file and check that this file is a unique name
             var sceneName = GetFileName();
@@ -191,7 +191,7 @@ namespace BarterBound.Admin.AddScene
             return result;
         }
 
-        private void WriteFile(string sceneName, SceneBlock sceneBlock)
+        private void WriteFile(string sceneName, Models.Scene sceneBlock)
         {
             var scenePath = Path.Combine(relativePath, $"{sceneName}.xml");
             XmlWriterSettings settings = new XmlWriterSettings();
@@ -203,7 +203,7 @@ namespace BarterBound.Admin.AddScene
             {
                 using (XmlWriter writer = XmlWriter.Create(scenePath, settings))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(SceneBlock));
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(Models.Scene));
                     xmlSerializer.Serialize(writer, sceneBlock);
                 }
             }

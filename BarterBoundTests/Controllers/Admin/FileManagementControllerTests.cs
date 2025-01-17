@@ -1,4 +1,5 @@
 ﻿using BarterBound.Admin.AddScene;
+using BarterBound.Models;
 using BarterBound.Tests.Controllers.ServicesTestable;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ namespace BarterBound.Tests.Controllers.Admin
             var fileWrapper = new FileTestable();
 
             var fileManagementController = new FileManagementController(fileWrapper);
+
+            var sceneName = "SceneExists";
+            var fileName = "";
+
+            fileManagementController.WriteFile(sceneName, block);
+
         }
     }
 }

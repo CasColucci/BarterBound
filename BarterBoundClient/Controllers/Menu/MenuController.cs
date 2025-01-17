@@ -1,5 +1,4 @@
 ﻿using BarterBound.Core.Interfaces;
-using BarterBound.Services.Interfaces;
 using static System.Console;
 
 namespace BarterBound.Controllers.Menu

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Models
 {
-    public class SceneBlock
+    public class Scene
     {
         public List<TextBlock> TextBlocks { get; set; } = new List<TextBlock>();
     }
