@@ -1,6 +1,5 @@
 ﻿
 using BarterBound.Data.Enums;
-using BarterBound.Data.Scenes;
 using BarterBound.Models;
 using System.Xml;
 using System.Xml.Serialization;
@@ -32,7 +31,7 @@ public class AddSceneController
     {
         _console.Clear();
         // set up the model for the whole scene file
-        var sceneBlock = new Models.Scene();
+        var scene = new Scene();
 
         // get a name for the file and check that this file is a unique name
         var sceneName = GetFileName();
@@ -42,7 +41,7 @@ public class AddSceneController
 
         // add TextValues one at a time
         // add next Action
-        sceneBlock.TextBlocks.Add(AddTextBlock(true));
+        scene.TextBlocks.Add(AddTextBlock(true));
 
         // ask if the more inputs
         var moreBlocksMenu = new MenuController(new ConsoleWrapper());
@@ -57,7 +56,7 @@ public class AddSceneController
             switch (selectedIndex)
             {
                 case 0:
-                    sceneBlock.TextBlocks.Add(AddTextBlock(false));
+                    scene.TextBlocks.Add(AddTextBlock(false));
                     break;
                 case 1:
                     addingMoreBlocks = false;
