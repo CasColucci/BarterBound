@@ -1,9 +1,8 @@
 using NUnit.Framework;
 using BarterBound.Controllers;
 using Moq;
-using BarterBound.Services.Interfaces;
 using BarterBound.Tests.Controllers.ServicesTestable;
-using BarterBound.Controllers.Admin;
+using BarterBound.Admin.AddScene;
 
 namespace BarterBound.Tests.Controllers
 {
@@ -19,7 +18,7 @@ namespace BarterBound.Tests.Controllers
             _console.ToRead = "Exists";
             
 
-            var adminController = new AdminController(_fileService, _console);
+            var adminController = new AddSceneController(_console);
 
             adminController.Run();
         }

@@ -72,7 +72,7 @@ namespace BarterBound.Controllers
                 case 0:
                     var fileService = new FileService();
                     var console = new ConsoleWrapper();
-                    AddSceneController adminController = new AddSceneController(fileService, console); 
+                    AddSceneController adminController = new AddSceneController(console); 
                     adminController.Run();
                     break;
                 case 1:

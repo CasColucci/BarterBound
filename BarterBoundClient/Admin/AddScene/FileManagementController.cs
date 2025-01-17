@@ -17,9 +17,16 @@ namespace BarterBound.Admin.AddScene
             _file = file;
         }
 
-        public void WriteFile(string fileName, object? block)
+        public bool FileExists(string sceneName)
         {
             throw new NotImplementedException();
         }
+
+        public void WriteFile(string fileName, object? fileContents)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

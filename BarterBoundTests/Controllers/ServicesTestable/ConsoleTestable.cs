@@ -32,5 +32,10 @@ namespace BarterBound.Tests.Controllers.ServicesTestable
         {
 
         }
+
+        public ConsoleKeyInfo ReadKey(bool intercept)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

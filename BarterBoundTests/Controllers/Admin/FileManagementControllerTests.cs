@@ -1,28 +1,38 @@
 ﻿using BarterBound.Admin.AddScene;
 using BarterBound.Models;
 using BarterBound.Tests.Controllers.ServicesTestable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
-namespace BarterBound.Tests.Controllers.Admin
+namespace BarterBound.Tests.Controllers.Admin;
+
+[TestFixture]
+internal class FileManagementControllerTests
 {
-    internal class FileManagementControllerTests
+    [Test]
+    public void TestFileExists_ReturnsFalse_WhenFileDoesntExist()
     {
-        [Test]
-        public void TestFileExists_ReturnsTrue_WhenFileExists()
-        {
-            var fileWrapper = new FileTestable();
+        var fileWrapper = new FileTestable();
 
-            var fileManagementController = new FileManagementController(fileWrapper);
+        var fileManagementController = new FileManagementController(fileWrapper);
 
-            var sceneName = "SceneExists";
-            var fileName = "";
+        var sceneName = "SceneDoesntExist";
 
-            fileManagementController.WriteFile(sceneName, block);
+        Assert.That(fileManagementController.FileExists(sceneName), Is.False, "");
+    }
+    [Test]
+    public void TestFileExists_ReturnsTrue_WhenFileExists()
+    {
+        var fileWrapper = new FileTestable();
 
-        }
+        var fileManagementController = new FileManagementController(fileWrapper);
+
+        var sceneName = "SceneExists";
+        var sceneBlock = new Scene();
+
+        fileManagementController.WriteFile(sceneName, sceneBlock);
+
+
+        Assert.That(fileManagementController.FileExists(sceneName), Is.True, "");
+
     }
 }

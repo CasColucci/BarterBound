@@ -88,7 +88,7 @@ namespace BarterBound.Admin.AddScene
             {
                 fileName = _console.ReadLine();
                 var filePath = Path.Combine(relativePath, $"{fileName}.xml");
-                var exists = _file.Exists(filePath);
+                var exists = File.Exists(filePath);
                 if (exists)
                 {
                     _console.WriteLine("This file name already exists. Please write a new one.");

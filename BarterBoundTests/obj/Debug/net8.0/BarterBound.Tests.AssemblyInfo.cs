@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BarterBound.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7dedc4be77d81b02157d90701f409eacc1888f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f98b9bb9902056ba0a01f4e6429cc5fc78aec60")]
 [assembly: System.Reflection.AssemblyProductAttribute("BarterBound.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BarterBound.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
