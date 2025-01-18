@@ -71,7 +71,7 @@ public class AddSceneController
         Thread.Sleep(2000);
         // save completed scene to the TextBlocks file
 
-        WriteFile(sceneName, sceneBlock);
+        WriteFile(sceneName, scene);
 
     }
 
