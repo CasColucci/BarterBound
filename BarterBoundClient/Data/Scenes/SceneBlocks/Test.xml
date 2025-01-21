@@ -1,8 +1,0 @@
-<TextBlocks>
-  <TriggerEvent>OnStart</TriggerEvent>
-  <TextValues>
-    <TextValue>Test</TextValue>
-    <TextValue>Test 2</TextValue>
-  </TextValues>
-  <NextAction>None</NextAction>
-</TextBlocks>
