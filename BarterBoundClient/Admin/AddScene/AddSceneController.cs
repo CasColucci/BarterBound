@@ -108,7 +108,7 @@ public class AddSceneController
     {
         var textBlock = new TextBlock();
 
-        var triggerEvent = NextActionEnum.OnStart;
+        var triggerEvent = Event.OnStart;
         if (!isFirstTextBlock)
         {
             _console.WriteLine("What is the trigger event for this text block?");
@@ -125,7 +125,7 @@ public class AddSceneController
         Thread.Sleep(2000);
         var nextAction = ConvertInputToAction();
 
-        textBlock.NextAction = nextAction;
+        textBlock.NextEvent = nextAction;
 
         return textBlock;
     }
@@ -170,14 +170,14 @@ public class AddSceneController
         return textValues;
     }
 
-    private NextActionEnum ConvertInputToAction()
+    private Event ConvertInputToAction()
     {
-        NextActionEnum result = NextActionEnum.None;
+        Event result = Event.None;
         bool notValid = true;
         while (notValid)
         {
             string input = ReadLine();
-            if (Enum.TryParse(input, out NextActionEnum action))
+            if (Enum.TryParse(input, out Event action))
             {
                 result = action;
                 notValid = false;

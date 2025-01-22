@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BarterBound.Data.Enums;
+using BarterBound.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +8,24 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Admin.Builders
 {
-    internal class TextBlockBuilder
+    public class TextBlockBuilder
     {
         // manage the building of a scene
+        private TextBlock _textBlock = new TextBlock();
 
-        // method that starts a text block with a boolean to determine if it is the first text block
+        public void AddTriggerEvent(Event validEnum)
+        {
+            _textBlock.TriggerEvent = validEnum;
+        }
+
+        public bool CheckValidEvent(string eventString)
+        {
+            return Enum.TryParse(eventString, out Event x);
+        }
+
+        public Event GetTriggerEvent()
+        {
+            return _textBlock.TriggerEvent;
+        }
     }
 }

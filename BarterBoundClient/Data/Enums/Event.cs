@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Data.Enums
 {
-    public enum NextActionEnum
+    public enum Event
     {
-        OnStart,
         None,
+        OnStart,
         NamePlayer
 
     }

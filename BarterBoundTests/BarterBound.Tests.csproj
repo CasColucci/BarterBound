@@ -29,4 +29,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Admin\Services\" />
+  </ItemGroup>
+
 </Project>

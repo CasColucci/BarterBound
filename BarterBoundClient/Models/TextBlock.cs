@@ -9,10 +9,10 @@ namespace BarterBound.Models
 {
     public class TextBlock
     {
-        public NextActionEnum TriggerEvent { get; set; }
+        public Event TriggerEvent { get; set; }
 
-        public List<string> TextValues { get; set; }
+        public List<string> TextValues { get; set; } = new List<string>();
 
-        public NextActionEnum NextAction { get; set; }
+        public Event NextEvent { get; set; }
     }
 }
