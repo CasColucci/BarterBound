@@ -1,4 +1,5 @@
 ﻿using BarterBound.Admin.Builders;
+using BarterBound.Admin.Services;
 using BarterBound.Data.Enums;
 
 namespace BarterBound.Tests.Controllers.Admin.Builders;
@@ -10,17 +11,26 @@ internal class TextBlockBuilderTests
     [SetUp]
     public void SetUp()
     {
-        _builder = new TextBlockBuilder();
+        var adminEventService = new AdminEventService();
+        _builder = new TextBlockBuilder(adminEventService);
     }
 
     [Test]
-    public void SetTriggerEvent_OnAddEvent_ExpectEventAdded()
+    public void SetTriggerEvent_OnAddValidEvent_ExpectEventAdded()
     {
         var validEnum = Event.OnStart;
 
         _builder.SetTriggerEvent(validEnum);
 
         Assert.That(_builder.GetTriggerEvent() == validEnum);
+    }
+
+    [Test]
+    public void SetTriggerEvent_OnAddInvalidEvent_ExpectThrowError()
+    {
+        var invalidEnum = Event.Invalid;
+
+        Assert.Throws<ArgumentException>(() => _builder.SetTriggerEvent(invalidEnum));
     }
 
     [Test]

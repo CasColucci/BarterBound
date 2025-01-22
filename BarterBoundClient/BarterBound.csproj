@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Admin\Builders\Interfaces\" />
-    <Folder Include="Admin\Services\Interfaces\" />
     <Folder Include="Game\" />
     <Folder Include="Shared\" />
   </ItemGroup>

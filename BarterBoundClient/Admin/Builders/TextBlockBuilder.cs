@@ -1,4 +1,5 @@
-﻿using BarterBound.Data.Enums;
+﻿using BarterBound.Admin.Services.Interfaces;
+using BarterBound.Data.Enums;
 using BarterBound.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,13 @@ namespace BarterBound.Admin.Builders
     {
         // manage the building of a scene
         private TextBlock _textBlock = new TextBlock();
+        private IAdminEventService _adminEventService;
+
+        public TextBlockBuilder(IAdminEventService adminEventService)
+        {
+            _adminEventService = adminEventService;
+
+        }
 
         public Event GetNextEvent()
         {
@@ -38,9 +46,16 @@ namespace BarterBound.Admin.Builders
             _textBlock.TextValues = textValues;
         }
 
-        public void SetTriggerEvent(Event validEnum)
+        public void SetTriggerEvent(Event triggerEvent)
         {
-            _textBlock.TriggerEvent = validEnum;
+            if(triggerEvent == Event.Invalid)
+            {
+                throw new ArgumentException();
+            }
+            else 
+            {
+                _textBlock.TriggerEvent = triggerEvent;
+            }
         }
     }
 }

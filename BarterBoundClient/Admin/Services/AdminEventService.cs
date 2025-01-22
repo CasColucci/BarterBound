@@ -1,4 +1,5 @@
-﻿using BarterBound.Data.Enums;
+﻿using BarterBound.Admin.Services.Interfaces;
+using BarterBound.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BarterBound.Admin.Services
 {
-    public class AdminEventService
+    public class AdminEventService : IAdminEventService
     {
         public bool CheckValidEvent(string eventString)
         {
