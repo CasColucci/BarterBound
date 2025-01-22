@@ -13,19 +13,34 @@ namespace BarterBound.Admin.Builders
         // manage the building of a scene
         private TextBlock _textBlock = new TextBlock();
 
-        public void AddTriggerEvent(Event validEnum)
+        public Event GetNextEvent()
         {
-            _textBlock.TriggerEvent = validEnum;
+            return _textBlock.NextEvent;
         }
 
-        public bool CheckValidEvent(string eventString)
+        public List<string> GetTextValues()
         {
-            return Enum.TryParse(eventString, out Event x);
+            return _textBlock.TextValues;
         }
 
         public Event GetTriggerEvent()
         {
             return _textBlock.TriggerEvent;
+        }
+
+        public void SetNextEvent(Event nextEvent) 
+        {
+            _textBlock.NextEvent = nextEvent;
+        }
+
+        public void SetTextValues(List<string> textValues)
+        {
+            _textBlock.TextValues = textValues;
+        }
+
+        public void SetTriggerEvent(Event validEnum)
+        {
+            _textBlock.TriggerEvent = validEnum;
         }
     }
 }

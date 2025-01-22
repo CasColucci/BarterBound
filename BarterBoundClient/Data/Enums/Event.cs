@@ -8,6 +8,7 @@ namespace BarterBound.Data.Enums
 {
     public enum Event
     {
+        Invalid,
         None,
         OnStart,
         NamePlayer

@@ -1,44 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BarterBound.Admin.Builders;
+﻿using BarterBound.Admin.Builders;
 using BarterBound.Data.Enums;
 
 namespace BarterBound.Tests.Controllers.Admin.Builders;
 
 internal class TextBlockBuilderTests
 {
-    [Test]
-    public void CheckValidEvent_OnValidEvent_ExpectTrue()
+    private TextBlockBuilder _builder;
+
+    [SetUp]
+    public void SetUp()
     {
-        var textBlockBuilder = new TextBlockBuilder();
-
-        var validEventString = "OnStart";
-
-        Assert.That(textBlockBuilder.CheckValidEvent(validEventString), Is.True);
+        _builder = new TextBlockBuilder();
     }
 
     [Test]
-    public void CheckValidEvent_OnInvalidEvent_ExpectFalse()
+    public void SetTriggerEvent_OnAddEvent_ExpectEventAdded()
     {
-        var textBlockBuilder = new TextBlockBuilder();
-
-        var invalidEventString = "Invalid";
-
-        Assert.That(textBlockBuilder.CheckValidEvent(invalidEventString), Is.False);
-    }
-
-    [Test]
-    public void AddTriggerEvent_OnAddEvent_ExpectEventAdded()
-    {
-        var textBlockBuilder = new TextBlockBuilder();
-
         var validEnum = Event.OnStart;
 
-        textBlockBuilder.AddTriggerEvent(validEnum);
+        _builder.SetTriggerEvent(validEnum);
 
-        Assert.That(textBlockBuilder.GetTriggerEvent() == validEnum);
+        Assert.That(_builder.GetTriggerEvent() == validEnum);
+    }
+
+    [Test]
+    public void SetTextValues_OnAddTextValues_ExpectTextValuesAdded()
+    {
+        var textValues = new List<string>()
+        {
+            "Test 1",
+            "Test 2",
+            "Test 3"
+        };
+
+        _builder.SetTextValues(textValues);
+
+        Assert.That(_builder.GetTextValues() == textValues);
+    }
+
+    [Test]
+    public void SetNextEvent_OnAddEvent_ExpectEventAdded()
+    {
+        var validEnum = Event.None;
+
+        _builder.SetNextEvent(validEnum);
+
+        Assert.That(_builder.GetNextEvent() == validEnum);
     }
 }
