@@ -35,11 +35,11 @@ internal class TextBlockBuilderTests
     }
 
     [Test]
-    public void SetTriggerEvent_OnBadEvent_ExpectThrowError()
+    public void SetTriggerEvent_OnAddBadEvent_ExpectThrowError()
     {
-        var invalidEnum = "Garbage String";
+        var badEnum = "Garbage String";
 
-        Assert.Throws<ArgumentException>(() => _builder.SetTriggerEvent(invalidEnum));
+        Assert.Throws<ArgumentException>(() => _builder.SetTriggerEvent(badEnum));
     }
 
     [Test]
@@ -58,12 +58,29 @@ internal class TextBlockBuilderTests
     }
 
     [Test]
-    public void SetNextEvent_OnAddEvent_ExpectEventAdded()
+    public void SetNextEvent_OnAddValidEvent_ExpectEventAdded()
     {
-        var validEnum = Event.None;
+        var validEnum = "None";
+        var nextEvent = Event.None;
 
         _builder.SetNextEvent(validEnum);
 
-        Assert.That(_builder.GetNextEvent() == validEnum);
+        Assert.That(_builder.GetNextEvent() == nextEvent);
+    }
+
+    [Test]
+    public void SetNextEvent_OnAddInvalidEvent_ExpectError()
+    {
+        var invalidEnum = "Invalid";
+
+        Assert.Throws<ArgumentException>(() => _builder.SetNextEvent(invalidEnum));
+    }
+
+    [Test]
+    public void SetNextEvent_OnAddBadEvent_ExpectError()
+    {
+        var badEnum = "Garbage String";
+
+        Assert.Throws<ArgumentException>(() => _builder.SetNextEvent(badEnum));
     }
 }

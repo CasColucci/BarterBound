@@ -31,9 +31,18 @@ namespace BarterBound.Admin.Builders
             return _textBlock.TriggerEvent;
         }
 
-        public void SetNextEvent(Event nextEvent) 
+        public void SetNextEvent(string nextString) 
         {
-            _textBlock.NextEvent = nextEvent;
+            var nextEvent = _adminEventService.ConvertStringToEvent(nextString);
+            if(nextEvent == Event.Invalid)
+            {
+                throw new ArgumentException();
+            }
+            else
+            {
+                _textBlock.NextEvent = nextEvent;
+            }
+
         }
 
         public void SetTextValues(List<string> textValues)
