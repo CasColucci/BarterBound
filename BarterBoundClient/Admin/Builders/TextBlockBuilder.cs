@@ -1,11 +1,6 @@
 ﻿using BarterBound.Admin.Services.Interfaces;
 using BarterBound.Data.Enums;
 using BarterBound.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BarterBound.Admin.Builders
 {
@@ -46,9 +41,10 @@ namespace BarterBound.Admin.Builders
             _textBlock.TextValues = textValues;
         }
 
-        public void SetTriggerEvent(Event triggerEvent)
+        public void SetTriggerEvent(string triggerString)
         {
-            if(triggerEvent == Event.Invalid)
+            var triggerEvent = _adminEventService.ConvertStringToEvent(triggerString);
+            if (triggerEvent == Event.Invalid)
             {
                 throw new ArgumentException();
             }

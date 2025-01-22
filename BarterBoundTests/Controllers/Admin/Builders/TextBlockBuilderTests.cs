@@ -18,17 +18,26 @@ internal class TextBlockBuilderTests
     [Test]
     public void SetTriggerEvent_OnAddValidEvent_ExpectEventAdded()
     {
-        var validEnum = Event.OnStart;
+        var validString = "OnStart";
+        var validEvent = Event.OnStart;
 
-        _builder.SetTriggerEvent(validEnum);
+        _builder.SetTriggerEvent(validString);
 
-        Assert.That(_builder.GetTriggerEvent() == validEnum);
+        Assert.That(_builder.GetTriggerEvent() == validEvent);
     }
 
     [Test]
     public void SetTriggerEvent_OnAddInvalidEvent_ExpectThrowError()
     {
-        var invalidEnum = Event.Invalid;
+        var invalidEnum = "Invalid";
+
+        Assert.Throws<ArgumentException>(() => _builder.SetTriggerEvent(invalidEnum));
+    }
+
+    [Test]
+    public void SetTriggerEvent_OnBadEvent_ExpectThrowError()
+    {
+        var invalidEnum = "Garbage String";
 
         Assert.Throws<ArgumentException>(() => _builder.SetTriggerEvent(invalidEnum));
     }
