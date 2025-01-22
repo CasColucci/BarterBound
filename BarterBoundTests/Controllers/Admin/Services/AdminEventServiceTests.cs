@@ -1,4 +1,5 @@
 ﻿using BarterBound.Admin.Services;
+using BarterBound.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,5 +40,33 @@ internal class AdminEventServiceTests
         var badEventString = "Garbage Event String";
 
         Assert.That(_service.CheckValidEvent(badEventString), Is.False);
+    }
+
+    [Test]
+    public void ConvertStringToEvent_OnValidEvent_ExpectSuccessfulChange()
+    {
+        var validEventString = "OnStart";
+        var onStart = Event.OnStart;
+
+        Event returnedEvent = _service.ConvertStringToEvent(validEventString);
+
+        Assert.That(returnedEvent, Is.EqualTo(onStart));
+    }
+
+    [Test]
+    public void ConvertStringToEvent_OnInvalidEvent_ExpectError()
+    {
+        var invalidEventString = "Invalid";
+
+        Assert.Throws<ArgumentException>(() => _service.ConvertStringToEvent(invalidEventString));
+    }
+
+    [Test]
+    public void ConvertStringToEvent_OnBadEvent_ExpectError()
+    {
+        var badEventString = "Garbage Event String";
+
+        Assert.Throws<ArgumentException>(() => _service.ConvertStringToEvent(badEventString));
+
     }
 }

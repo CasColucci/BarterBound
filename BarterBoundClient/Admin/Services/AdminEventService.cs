@@ -19,5 +19,22 @@ namespace BarterBound.Admin.Services
             }
             return valid;
         }
+
+        public Event ConvertStringToEvent(string eventString)
+        {
+            Event value;
+            if(CheckValidEvent(eventString))
+            {
+                Enum.TryParse(eventString, out Event newEvent);
+                value = newEvent;
+            }
+            else
+            {
+                value = Event.Invalid;
+                throw new ArgumentException("Unable to convert to Event, invalid string");
+            }
+
+            return value;
+        }
     }
 }
