@@ -4,23 +4,39 @@ using BarterBound.Models;
 
 namespace BarterBound.Admin.Builders
 {
+    /// <summary>
+    /// Build the object "Text Block", which stores a trigger event, text values, 
+    /// and a next event.
+    /// </summary>
     public class TextBlockBuilder
     {
-        // manage the building of a scene
         private TextBlock _textBlock = new TextBlock();
         private IAdminEventService _adminEventService;
 
+        /// <summary>
+        /// Build the object "Text Block", which stores a trigger event, 
+        /// text values, and a next event.
+        /// </summary>
+        /// <param name="adminEventService"></param>
         public TextBlockBuilder(IAdminEventService adminEventService)
         {
             _adminEventService = adminEventService;
 
         }
 
+        /// <summary>
+        /// Get the next event to follow the text values
+        /// </summary>
+        /// <returns>next Event from the TextBlock</returns>
         public Event GetNextEvent()
         {
             return _textBlock.NextEvent;
         }
 
+        /// <summary>
+        /// Get the text values for the TextBlock
+        /// </summary>
+        /// <returns>the text values</returns>
         public List<string> GetTextValues()
         {
             return _textBlock.TextValues;
