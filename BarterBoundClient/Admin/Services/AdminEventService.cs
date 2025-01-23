@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BarterBound.Admin.Services;
 
-
+/// <inheritdoc/>
 public class AdminEventService : IAdminEventService
 {
     /// <inheritdoc/>

@@ -19,6 +19,7 @@ namespace BarterBound.Core.Interfaces
         void ResetColor();
 
         void Clear();
+
         ConsoleKeyInfo ReadKey(bool intercept);
     }
 }

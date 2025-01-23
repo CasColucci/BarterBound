@@ -8,7 +8,7 @@ namespace BarterBound.Tests.Shared
 {
     internal class UserInputServiceTests
     {
-        [Test]
+
 
     }
 }

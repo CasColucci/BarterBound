@@ -2,6 +2,9 @@
 
 namespace BarterBound.Admin.Services.Interfaces;
 
+/// <summary>
+/// A service to handle event validation and event conversion from string
+/// </summary>
 public interface IAdminEventService
 {
     /// <summary>
