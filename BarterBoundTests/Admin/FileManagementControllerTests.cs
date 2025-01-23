@@ -3,7 +3,7 @@ using BarterBound.Models;
 using BarterBound.Tests.Controllers.ServicesTestable;
 using NUnit.Framework;
 
-namespace BarterBound.Tests.Controllers.Admin;
+namespace BarterBound.Tests.Admin;
 
 [TestFixture]
 internal class FileManagementControllerTests

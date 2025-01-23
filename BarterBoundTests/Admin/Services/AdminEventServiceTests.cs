@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarterBound.Tests.Controllers.Admin.Services;
+namespace BarterBound.Tests.Admin.Services;
 
 internal class AdminEventServiceTests
 {

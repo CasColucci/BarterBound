@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Admin\Builders\Interfaces\" />
     <Folder Include="Game\" />
-    <Folder Include="Shared\" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using Moq;
 using BarterBound.Tests.Controllers.ServicesTestable;
 using BarterBound.Admin.AddScene;
 
-namespace BarterBound.Tests.Controllers.Admin
+namespace BarterBound.Tests.Admin
 {
 
 

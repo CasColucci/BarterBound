@@ -2,7 +2,7 @@
 using BarterBound.Admin.Services;
 using BarterBound.Data.Enums;
 
-namespace BarterBound.Tests.Controllers.Admin.Builders;
+namespace BarterBound.Tests.Admin.Builders;
 
 internal class TextBlockBuilderTests
 {
