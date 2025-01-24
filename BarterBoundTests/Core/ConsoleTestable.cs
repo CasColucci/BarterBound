@@ -1,44 +1,59 @@
 ﻿using BarterBound.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BarterBound.Tests.Core
+namespace BarterBound.Tests.Core;
+
+
+public class ConsoleTestable : IConsole
 {
-    internal class ConsoleTestable : IConsole
+    public ConsoleColor ForegroundColor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+    public string lineToReturn = string.Empty;
+
+    public string lastLineWritten = string.Empty;
+
+    public ConsoleKeyInfo keyToReturn = new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false);
+
+    public void Clear()
     {
-        public ConsoleColor ForegroundColor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    }
 
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
+    public void SetReadKey(ConsoleKeyInfo keyInfo)
+    {
+        keyToReturn = keyInfo;
+    }
 
-        public ConsoleKeyInfo ReadKey(bool intercept)
-        {
-            throw new NotImplementedException();
-        }
+    public ConsoleKeyInfo ReadKey(bool intercept)
+    {
+        return keyToReturn;
+    }
 
-        public string? ReadLine()
-        {
-            throw new NotImplementedException();
-        }
+    // set a value to return when ReadLine is called
+    public void SetReadLine(string input)
+    {
+        lineToReturn = input;
+    }
 
-        public void ResetColor()
-        {
-            throw new NotImplementedException();
-        }
+    public string? ReadLine()
+    {
+        return lineToReturn; 
+    }
 
-        public void Write(string message)
-        {
-            throw new NotImplementedException();
-        }
+    public void ResetColor()
+    {
+    }
 
-        public void WriteLine(string message)
-        {
-            throw new NotImplementedException();
-        }
+    public void Write(string message)
+    {
+        lastLineWritten = message;
+    }
+
+    public void WriteLine(string message)
+    {
+        lastLineWritten = message;
+    }
+
+    internal string GetLastWrittenLine()
+    {
+        return lastLineWritten;
     }
 }
