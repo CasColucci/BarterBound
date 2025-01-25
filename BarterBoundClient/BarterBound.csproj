@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Admin\Builders\Interfaces\**" />
+    <EmbeddedResource Remove="Admin\Builders\Interfaces\**" />
+    <None Remove="Admin\Builders\Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
@@ -20,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\Builders\Interfaces\" />
     <Folder Include="Game\" />
   </ItemGroup>
 

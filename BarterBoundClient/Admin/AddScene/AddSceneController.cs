@@ -6,9 +6,9 @@ using System.Xml.Serialization;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
 using System;
-using BarterBound.Controllers.Menu;
 using BarterBound.Core.Interfaces;
 using BarterBound.Core.Wrapper;
+using BarterBound.Shared;
 
 namespace BarterBound.Admin.AddScene;
 

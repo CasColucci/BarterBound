@@ -5,7 +5,7 @@ namespace BarterBound.Tests.Core;
 
 public class ConsoleTestable : IConsole
 {
-    public ConsoleColor ForegroundColor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public ConsoleColor ForegroundColor { get => HandleForegroundColor(); set => HandleForegroundColor(); }
 
     public string lineToReturn = string.Empty;
 
@@ -50,6 +50,11 @@ public class ConsoleTestable : IConsole
     public void WriteLine(string message)
     {
         lastLineWritten = message;
+    }
+
+    public ConsoleColor HandleForegroundColor()
+    {
+        return ConsoleColor.Black;
     }
 
     internal string GetLastWrittenLine()

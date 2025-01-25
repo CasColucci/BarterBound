@@ -1,8 +1,8 @@
 ﻿using BarterBound.Admin.AddScene;
-using BarterBound.Controllers.Menu;
 using BarterBound.Core.Wrapper;
 using BarterBound.Data.Scenes;
 using BarterBound.Services;
+using BarterBound.Shared;
 using static System.Console;
 
 namespace BarterBound.Controllers

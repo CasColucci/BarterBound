@@ -1,7 +1,7 @@
 ﻿using BarterBound.Core.Interfaces;
 using static System.Console;
 
-namespace BarterBound.Controllers.Menu
+namespace BarterBound.Shared
 {
     public class MenuController
     {

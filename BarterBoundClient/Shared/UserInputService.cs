@@ -21,25 +21,5 @@ namespace BarterBound.Shared
         {
             return _console.ReadLine();
         }
-
-        public Type? GetUserInputUntilValid(Type type, string prompt, string incorrectWarning)
-        {
-            var input = string.Empty;
-            _console.Clear();
-            _console.WriteLine(prompt);
-
-            while (true)
-            {
-                input = _console.ReadLine();
-
-                if (input == null)
-                {
-                    _console.WriteLine("Please enter a value");
-                }
-
-            }
-
-            throw new NotImplementedException();
-        }
     }
 }

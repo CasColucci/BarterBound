@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using BarterBound.Controllers;
 using Moq;
-using BarterBound.Controllers.Menu;
+using BarterBound.Shared;
 
 namespace BarterBound.Tests.Controllers
 {
